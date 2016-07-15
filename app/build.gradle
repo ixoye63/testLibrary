@@ -1,0 +1,39 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "24.0.0"
+
+    defaultConfig {
+        applicationId "com.tongtong.tonglibrary"
+        minSdkVersion 15
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+
+    repositories {
+        jcenter {
+            url 'https://dl.bintray.com/ixoye63/maven/'
+        }
+
+        // libs 파일의 경로를 참조하도록 수정
+        flatDir {
+            dirs 'libs'
+        }
+    }
+
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    // compile 'com.tongtong.testlibrary:testlibrary:0.1.0'
+}
